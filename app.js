@@ -89,6 +89,24 @@ app.get('/delete/:id', (req, res) => {
 	})
 })
 
+app.get('/rechercherUnMembre', (req, res) => {
+	var recherche = req.query.search;
+	console.log(recherche);
+	/*if (recherche.length = 24) {
+		console.log("yep 24 caracteres = id")
+		res.redirect('/adresse')
+	}*/
+	/*var critere = ObjectID(req.params.id)
+	console.log(critere)
+
+	console.log(id)
+	db.collection('adresse').findOneAndDelete({"_id": critere}, (err, resultat) => {
+		if (err) return console.log(err)
+		res.redirect('/adresse')
+	})*/
+
+})
+
 //////////////////////////////// route trier
 app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
