@@ -92,21 +92,18 @@ app.get('/delete/:id', (req, res) => {
 //////////////////////////////// route rechercher un membre
 app.post('/rechercherUnMembre', (req, res) => {
 
-		  		db.collection("adresse").find({ $or:[
-		  	{'nom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
-  			{'prenom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
-  			{'telephone' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
-  			{'courriel' : { '$regex' : req.body.motRecherche, '$options' : 'i' }}
+	db.collection("adresse").find({ $or:[
+	  	{'nom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
+		{'prenom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
+		{'telephone' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
+		{'courriel' : { '$regex' : req.body.motRecherche, '$options' : 'i' }}
 
+  	]}).toArray(function(err, resultat) {
+   		if (err) throw err;
+    	console.log(resultat);
+    	res.render('composants/adresses.ejs', {adresses: resultat})
 
-  		]}).toArray(function(err, resultat) {
-   		 if (err) throw err;
-    		console.log(resultat);
-    	 res.render('composants/adresses.ejs', {adresses: resultat})
-    	 console.log(resultat);
-
-});
-
+	});
 })
 
 //////////////////////////////// route trier
