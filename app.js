@@ -89,9 +89,8 @@ app.get('/delete/:id', (req, res) => {
 	})
 })
 
-app.get('/rechercherUnMembre', (req, res) => {
-	var recherche = req.query.search;
-	console.log(recherche);
+app.post('/rechercherUnMembre', (req, res) => {
+
 	/*if (recherche.length = 24) {
 		console.log("yep 24 caracteres = id")
 		res.redirect('/adresse')
