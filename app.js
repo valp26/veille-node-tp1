@@ -91,18 +91,16 @@ app.get('/delete/:id', (req, res) => {
 
 app.post('/rechercherUnMembre', (req, res) => {
 
-	/*if (recherche.length = 24) {
-		console.log("yep 24 caracteres = id")
-		res.redirect('/adresse')
-	}*/
-	/*var critere = ObjectID(req.params.id)
-	console.log(critere)
+		  		db.collection("adresse").find({ $or:[
+  			{'prenom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }}
 
-	console.log(id)
-	db.collection('adresse').findOneAndDelete({"_id": critere}, (err, resultat) => {
-		if (err) return console.log(err)
-		res.redirect('/adresse')
-	})*/
+  		]}).toArray(function(err, resultat) {
+   		 if (err) throw err;
+    		console.log(resultat);
+    	 res.render('composants/adresses.ejs', {adresses: resultat})
+    	 console.log(resultat);
+
+});
 
 })
 
