@@ -92,6 +92,7 @@ app.get('/delete/:id', (req, res) => {
 app.post('/rechercherUnMembre', (req, res) => {
 
 		  		db.collection("adresse").find({ $or:[
+		  	{'nom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }},
   			{'prenom' : { '$regex' : req.body.motRecherche, '$options' : 'i' }}
 
   		]}).toArray(function(err, resultat) {
